@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-from distutils.core import setup, Extension
+from setuptools import setup
+from setuptools.extension import Extension
+
 
 setup(
     name = 'zbar',
