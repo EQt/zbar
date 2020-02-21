@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 from setuptools import setup
 from setuptools.extension import Extension
+import sys
+from os import path
 
 
 setup(
@@ -41,6 +43,11 @@ setup(
                 'scanner.c',
                 ],
             libraries = [ 'zbar' ],
+            include_dirs=['../include'],
+            library_dirs=['../zbar/.libs'],
+            extra_link_args=['-Wl,-rpath=' + path.abspath(
+                path.join(path.dirname(__file__), '..', 'zbar', '.libs')
+            )] if sys.platform != 'win32' else [],
         ),
     ],
 )
